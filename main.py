@@ -8,7 +8,7 @@ import asyncio
 #FPS = 2
 
 class sankaku(pygame.sprite.Sprite):
-    def __init__(self,filename,x,y):
+    asyncio def __init__(self,filename,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(filename).convert_alpha()
         self.rect = self.image.get_rect()
@@ -17,7 +17,7 @@ class sankaku(pygame.sprite.Sprite):
         print(self.Sankaku)
         self.x = x
         self.y = y
-    def update(self,x,y):
+    asyncio def update(self,x,y):
         self.x = x
         self.y = y
 
@@ -27,7 +27,7 @@ class horse_Sprite(pygame.sprite.Sprite):
     flag = 0
     images = []
 
-    def __init__(self,name,x,y):
+    asyncio def __init__(self,name,x,y):
         pygame.sprite.Sprite.__init__(self)
         all_image = pygame.image.load(name).convert_alpha()
         self.char_width = all_image.get_width()
@@ -45,7 +45,7 @@ class horse_Sprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(x,y))
         print(self.rect)
         self.y = 240
-    def update(self,way,bgx,mono):
+    asyncio def update(self,way,bgx,mono):
         #print(self.images)
         #print(int(self.frame/5) + way * int(self.char_width / 240))
         self.image = self.images[int(self.frame/5) + way * int(self.char_width / 240)]
@@ -65,12 +65,12 @@ class horse_Sprite(pygame.sprite.Sprite):
         #if self.rect.colliderect(mono):
         #    print("True")
         #self.rect = self.image.get_rect(center=((500,420)))
-    def draw(self,surface,x,y):
+    asyncio def draw(self,surface,x,y):
         surface.blit(self.image,(x,y))
         self.y = y
     #def collide_shogaibutsu(self,mono):
 
-def menu():
+asyncio def menu():
     running = True
     pygame.init()
     font = pygame.font.SysFont("けいふぉんと",36)
@@ -200,5 +200,5 @@ async def main():
                 pygame.quit()
                 sys.exit
 if __name__ == "__main__":
-    menu()
+    asyncio.run(menu())
     asyncio.run(main())
