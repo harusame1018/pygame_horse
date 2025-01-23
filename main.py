@@ -18,9 +18,10 @@ class sankaku(pygame.sprite.Sprite):
         self.x = x
         self.y = y
     asyncio def update(self,x,y):
+        await asyncio.sleep(0)
         self.x = x
         self.y = y
-        await asyncio.sleep(0)
+        
 
 class horse_Sprite(pygame.sprite.Sprite):
     frame = 0
@@ -46,6 +47,7 @@ class horse_Sprite(pygame.sprite.Sprite):
         print(self.rect)
         self.y = 240
     asyncio def update(self,way,bgx,mono):
+        await asyncio.sleep(0)
         #print(self.images)
         #print(int(self.frame/5) + way * int(self.char_width / 240))
         self.image = self.images[int(self.frame/5) + way * int(self.char_width / 240)]
@@ -61,17 +63,19 @@ class horse_Sprite(pygame.sprite.Sprite):
         elif self.frame < 0:
             self.frame = 5
             self.flag = 0
-        await asyncio.sleep(0)    
+            
         #if self.rect.colliderect(mono):
         #    print("True")
         #self.rect = self.image.get_rect(center=((500,420)))
     asyncio def draw(self,surface,x,y):
+        await asyncio.sleep(0)
         surface.blit(self.image,(x,y))
         self.y = y
-        await asyncio.sleep(0)
+        
     #def collide_shogaibutsu(self,mono):
 
 asyncio def menu():
+    await asyncio.sleep(0)
     running = True
     pygame.init()
     font = pygame.font.SysFont("けいふぉんと",36)
@@ -87,8 +91,7 @@ asyncio def menu():
             if event.type == QUIT:
                 running = False
                 pygame.quit()
-                sys.exit
-    await asyncio.sleep(0)            
+                sys.exit            
 async def main():
     await asyncio.sleep(0)
     start_time = time.time()
